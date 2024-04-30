@@ -579,12 +579,12 @@ Resources:
 
   # Ingress Routes must follow the same flow: IGW -> NAT -> FW -> PrivateSubnet
   # Ingress traffic to Private Subnet must flow via FW Endpoint of the same AZ.
-  PrivateRtb1InRoute:
+  PublicRtb1InRoute:
     Type: AWS::EC2::Route
     Properties:
       DestinationCidrBlock: !Select [ 0, !Ref PrivateSubnetCIDR ]
       VpcEndpointId: !GetAtt FirewallVpceIds.FwVpceId1
-      RouteTableId: !Ref PrivateRtb1
+      RouteTableId: !Ref PublicRtb1
 
   PublicRtb2:
     Type: AWS::EC2::RouteTable
@@ -610,12 +610,12 @@ Resources:
 
   # Ingress Routes must follow the same flow: IGW -> NAT -> FW -> PrivateSubnet
   # Ingress traffic to Private Subnet must flow via FW Endpoint of the same AZ.
-  PrivateRtb2InRoute:
+  PublicRtb2InRoute:
     Type: AWS::EC2::Route
     Properties:
       DestinationCidrBlock: !Select [ 1, !Ref PrivateSubnetCIDR ]
       VpcEndpointId: !GetAtt FirewallVpceIds.FwVpceId2
-      RouteTableId: !Ref PrivateRtb2
+      RouteTableId: !Ref PublicRtb2
 
 # Firewall Route Tables:
   FirewallRtb1:
