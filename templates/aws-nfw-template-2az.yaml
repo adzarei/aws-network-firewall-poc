@@ -18,10 +18,12 @@ Parameters:
   AvailabilityZone1Selection:
     Description: Availability Zone 1
     Type: AWS::EC2::AvailabilityZone::Name
+    Default: "eu-central-1a"
 
   AvailabilityZone2Selection:
     Description: Availability Zone 2
     Type: AWS::EC2::AvailabilityZone::Name
+    Default: "eu-central-1b"
 
   LatestAmiId:
     Description: Latest EC2 AMI from Systems Manager Parameter Store
