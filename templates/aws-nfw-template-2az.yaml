@@ -28,7 +28,7 @@ Parameters:
   LatestAmiId:
     Description: Latest EC2 AMI from Systems Manager Parameter Store
     Type: 'AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>'
-    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-minimal-kernel-default-x86_64'
+    Default: '/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64'
 
   BaseVPCCIDR:
     Description: CIDR range of the base VPC.
@@ -280,7 +280,7 @@ Resources:
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !Sub "NfwPoC-AnfwLambdaRole-${AWS::Region}"
+      RoleName: !Sub "NfwPoC-LambdaRole-${AWS::Region}"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -310,7 +310,7 @@ Resources:
   RetrieveVpcIdLogGroup:
     Type: AWS::Logs::LogGroup
     Properties:
-        LogGroupName: !Sub "/AnfwDemo/Lambda/RetrieveVpceId-${AWS::Region}"
+        LogGroupName: !Sub "/NfwPoC/Lambda/RetrieveVpceId-${AWS::Region}"
         RetentionInDays: 1
 
   RetrieveVpceId:
