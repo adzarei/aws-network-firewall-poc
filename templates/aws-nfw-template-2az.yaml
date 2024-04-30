@@ -373,17 +373,13 @@ Resources:
       FwArn: !Ref BaseVPCFirewall
 
 # Instance Security Group:
+# For SSM only https outbound traffic to SSM endpoints is required. Not inbound rules required.
   SubnetSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
       GroupDescription: "ICMP access from Base VPC CIDR Range."
       GroupName: "NfwPoC-BaseVPC-TestInstance-Sg1"
       VpcId: !Ref BaseVPC
-      SecurityGroupIngress:
-        - IpProtocol: icmp
-          CidrIp: !Ref BaseVPCCIDR
-          FromPort: -1
-          ToPort: -1
       Tags:
         - Key: Name
           Value: "NfwPoC-BaseVPC-TestInstance-Sg1"
