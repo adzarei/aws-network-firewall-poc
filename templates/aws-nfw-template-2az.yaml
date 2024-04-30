@@ -50,13 +50,6 @@ Parameters:
     Type: CommaDelimitedList
     Default: '10.1.201.0/24, 10.1.202.0/24'
 
-  MyAssetsBucketName:
-    Description: Assets bucket name
-    Type: String
-  MyAssetsBucketPrefix:
-    Description: Assets bucket prefix
-    Type: String
-
 Resources:
 # VPC:
   BaseVPC:
