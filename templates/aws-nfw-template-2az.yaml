@@ -254,7 +254,7 @@ Resources:
       RoleName: !Sub "NfwPoC-BaseVPC-SSMRole-${AWS::Region}"
       Path: "/"
       ManagedPolicyArns:
-        - "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+        - "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
