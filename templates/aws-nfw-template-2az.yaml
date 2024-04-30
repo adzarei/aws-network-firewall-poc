@@ -198,7 +198,7 @@ Resources:
     Type: AWS::EC2::SecurityGroup
     Properties:
         GroupDescription: Allow instances to get to SSM Systems Manager
-        VpcId: BaseVPC
+        VpcId: !Ref BaseVPC
         SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 443
@@ -219,7 +219,7 @@ Resources:
           - !Ref PublicSubnet1
           - !Ref PublicSubnet2
         VpcEndpointType: Interface
-        VpcId: BaseVPC
+        VpcId: !Ref BaseVPC
 
   BaseVPCEC2MessagesEndpoint:
     Type: AWS::EC2::VPCEndpoint
@@ -232,7 +232,7 @@ Resources:
           - !Ref PublicSubnet1
           - !Ref PublicSubnet2
         VpcEndpointType: Interface
-        VpcId: BaseVPC
+        VpcId: !Ref BaseVPC
 
   BaseVPCSSMMessagesEndpoint:
     Type: AWS::EC2::VPCEndpoint
@@ -245,7 +245,7 @@ Resources:
           - !Ref PublicSubnet1
           - !Ref PublicSubnet2
         VpcEndpointType: Interface
-        VpcId: BaseVPC
+        VpcId: !Ref BaseVPC
 
 # SSM Role:
   SubnetRole:
@@ -378,7 +378,7 @@ Resources:
     Properties:
       GroupDescription: "ICMP access from Base VPC CIDR Range."
       GroupName: "NfwPoC-BaseVPC-TestInstance-Sg1"
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       SecurityGroupIngress:
         - IpProtocol: icmp
           CidrIp: !Ref BaseVPCCIDR
@@ -477,7 +477,7 @@ Resources:
     Properties:
       FirewallName: NfwPoC-InspectionFirewall
       FirewallPolicyArn: !Ref EgressFirewallPolicy
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       SubnetMappings:
         - SubnetId: !Ref FirewallSubnet1
         - SubnetId: !Ref FirewallSubnet2
@@ -515,7 +515,7 @@ Resources:
   PrivateRtb1:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-PrivateRouteTable1
@@ -536,7 +536,7 @@ Resources:
   PrivateRtb2:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-PrivateRouteTable2
@@ -558,7 +558,7 @@ Resources:
   PublicRtb1:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-PublicRouteTable1
@@ -589,7 +589,7 @@ Resources:
   PublicRtb2:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-PublicRouteTable2
@@ -621,7 +621,7 @@ Resources:
   FirewallRtb1:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-FirewallRouteTable1
@@ -642,7 +642,7 @@ Resources:
   FirewallRtb2:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: BaseVPC
+      VpcId: !Ref BaseVPC
       Tags:
         - Key: Name
           Value: NfwPoC-BaseVPC-FirewallRouteTable2
@@ -668,7 +668,7 @@ Resources:
 #  IngressRtb:
 #    Type: AWS::EC2::RouteTable
 #    Properties:
-#      VpcId: BaseVPC
+#      VpcId: !Ref BaseVPC
 #      Tags:
 #        - Key: Name
 #          Value: NfwPoC-BaseVPC-IngressRouteTable
